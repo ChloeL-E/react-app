@@ -1,3 +1,17 @@
+import Buttons from "./components/Buttons";
+
+function App() {
+  return (
+    <div>
+      <Buttons color="primary" onClick={() => console.log("Clicked")}>
+        Click Me
+      </Buttons>
+    </div>
+  );
+}
+
+{
+  /*
 import ListGroup from "./components/ListGroup";
 
 function App() {
@@ -13,6 +27,14 @@ function App() {
       />
     </div>
   );
+}*/
+}
+
+{
+  /* example from Alert.tsx to go above to demo passing children to a component*/
+}
+{
+  /* <div><Alert>Hello <span>World</span></Alert></div> */
 }
 
 export default App;
