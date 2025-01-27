@@ -1,0 +1,10 @@
+.btn {
+    padding:10px;
+    size: 40px 20px;
+    border-radius: 10px;
+}
+
+.btn-secondary {
+    background-color: #046573;
+    color: white;
+}
