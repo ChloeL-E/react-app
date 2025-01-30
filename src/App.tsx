@@ -2,11 +2,26 @@ import { useState } from "react";
 import Alert from "./components/Alert";
 import Buttons from "./components/Buttons/Buttons";
 import Like from "./components/Like";
+import Navbar from "./components/Navbar";
+import Cart from "./components/Cart";
 
 function App() {
-  const [alertVisible, setAlertVisibility] = useState(false);
+  const [cartItems, setCartItems] = useState(['Product 1', 'Product 2']);
 
   return (
+    <div>
+      <Navbar cartItemsCount={cartItems.length} />
+      <Cart cartItems={cartItems} onClear={() => setCartItems([])} />
+    </div>
+  )
+
+
+
+
+/* {  const [alertVisible, setAlertVisibility] = useState(false);
+
+
+ return (
     <div>
       <Like onClick={() => console.log("clicked")} />
       {alertVisible && (
@@ -18,8 +33,9 @@ function App() {
     </div>
   );
 }
+*/
 
-{
+
   /*
 import ListGroup from "./components/ListGroup";
 
