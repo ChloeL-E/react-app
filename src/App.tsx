@@ -6,14 +6,34 @@ import Navbar from "./components/Navbar";
 import Cart from "./components/Cart";
 import ExpandableText from "./components/ExpandableText";
 import Form from "./components/Form";
+import ExpenseList from "./expense-tracker/components/ExpenseList";
 
 function App() {
+  const [expenses, setExpenses] = useState([
+    { id: 1, description: "aaa", amount: 10, category: "Utilities" },
+    { id: 2, description: "bbb", amount: 20, category: "Utilities" },
+    { id: 3, description: "ccc", amount: 30, category: "Utilities" },
+    { id: 4, description: "ddd", amount: 40, category: "Utilities" },
+  ]);
+
+  return (
+    <div>
+      <ExpenseList
+        expenses={expenses}
+        heading="Expenses List"
+        onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
+      />
+    </div>
+  );
+}
+
+/*function App() {
   return (
     <div>
       <Form />
     </div>
   );
-}
+}*/
 
 /*function App() {
   return (
@@ -71,7 +91,7 @@ function App() {
     <div>
       <ListGroup
         items={items}
-        heading="Cities"
+        heading="Expense List"
         onSelectItem={handleSelectItem}
       />
     </div>
