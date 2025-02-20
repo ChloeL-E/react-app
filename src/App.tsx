@@ -5,8 +5,17 @@ import Like from "./components/Like";
 import Navbar from "./components/Navbar";
 import Cart from "./components/Cart";
 import ExpandableText from "./components/ExpandableText";
+import Form from "./components/Form";
 
 function App() {
+  return (
+    <div>
+      <Form />
+    </div>
+  );
+}
+
+/*function App() {
   return (
     <ExpandableText maxChars={25}>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
@@ -22,7 +31,7 @@ function App() {
       tenetur quod voluptatibus, labore enim cupiditate maxime.
     </ExpandableText>
   );
-}
+}*/
 
 /*function App() {
   const [cartItems, setCartItems] = useState(['Product 1', 'Product 2']);
