@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Alert from "./components/Alert";
 import Buttons from "./components/Buttons/Buttons";
 import Like from "./components/Like";
@@ -10,8 +10,42 @@ import ExpenseList from "./expense-tracker/components/ExpenseList";
 import ExpenseFilter from "./expense-tracker/components/ExpenseFilter";
 import ExpenseForm from "./expense-tracker/components/ExpenseForm";
 import categories from "./expense-tracker/categories";
+import axios from "axios";
+
+interface User {
+  id: number;
+  name: string;
+}
 
 function App() {
+  const [users, setUsers] = useState<User[]>([]);
+
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    // get -> await promise -> res/error
+    axios
+      .get<User[]>("https://jsonplaceholder.typicode.com/users")
+      .then((res) => {
+        setUsers(res.data);
+        setError(""); // clear error message if data then loads correctly
+      })
+      .catch((err) => setError(err.message));
+  }, []); // always add an empty array/dependencies after or else you end up in an infinite loop
+
+  return (
+    <>
+      {error && <p className="text-danger">{error}</p>}
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+/*function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [expenses, setExpenses] = useState([
     { id: 1, description: "aaa", amount: 10, category: "Utilities" },
@@ -45,7 +79,7 @@ function App() {
       />
     </div>
   );
-}
+}*/
 
 /*function App() {
   return (
